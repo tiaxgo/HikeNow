@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Dimensions, KeyboardAvoidingView, Platform, ScrollView, Image } from 'react-native';
+import auth from '@react-native-firebase/auth'; // Importe o SDK do Firebase Authentication
 
 // Obtém a altura da tela
 const { height } = Dimensions.get('window');
@@ -100,6 +101,7 @@ const SecondScreen = ({ navigation }) => {
     </KeyboardAvoidingView>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -223,5 +225,7 @@ const styles = StyleSheet.create({
     marginRight: 0, // Margem específica para o botão 2
   },
 });
+
+
 
 export default SecondScreen;
