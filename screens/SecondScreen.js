@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Dimensions, KeyboardAvoidingView, Platform, ScrollView, Image } from 'react-native';
 import auth from '@react-native-firebase/auth'; // Importe o SDK do Firebase Authentication
+import { Alert } from 'react-native';
 
 // Obtém a altura da tela
 const { height } = Dimensions.get('window');
@@ -8,6 +9,19 @@ const { height } = Dimensions.get('window');
 const SecondScreen = ({ navigation }) => {
   // Estado para controlar qual botão está pressionado
   const [pressedButton, setPressedButton] = useState(null);
+  const [email, setEmail] = useState(''); // 🔵 Estado para o e-mail 🔵
+  const [password, setPassword] = useState(''); // 🔵 Estado para a senha 🔵
+
+    // 🔵 Função de login usando Firebase Authentication 🔵
+  const handleLogin = async () => {
+     try {
+      const userCredential = await auth().signInWithEmailAndPassword(email, password);
+      Alert.alert('Sucesso!', 'Login realizado com sucesso.');
+      navigation.navigate('HomeScreen'); // Redireciona para a HomeScreen após login
+   }  catch (error) {
+      Alert.alert('Erro no login', error.message);
+   }
+};
 
   return (
     <KeyboardAvoidingView 
@@ -28,12 +42,16 @@ const SecondScreen = ({ navigation }) => {
           <TextInput 
             placeholder="E-mail" 
             style={styles.input} 
+            value={email} // 🔵 Vincula o estado do e-mail 🔵
+            onChangeText={setEmail} // 🔵 Atualiza o estado do e-mail 🔵
           />
           <View style={styles.passwordContainer}>
             <TextInput 
               placeholder="Senha" 
               secureTextEntry 
               style={styles.input} 
+              value={password} // 🔵 Vincula o estado da senha 🔵
+              onChangeText={setPassword} // 🔵 Atualiza o estado da senha 🔵
             />
             <TouchableOpacity
               style={styles.forgotPasswordContainer}
@@ -50,7 +68,8 @@ const SecondScreen = ({ navigation }) => {
             activeOpacity={1} // Remove a mudança de opacidade ao pressionar
             onPressIn={() => setPressedButton('entrar')} // Define qual botão está pressionado
             onPressOut={() => setPressedButton(null)} // Restaura o estado quando solto
-            onPress={() => alert('Logado com sucesso!')}
+            // onPress={() => alert('Logado com sucesso!')} VER ESSE CHAMDO
+            onPress={handleLogin} // 🔵 Chama a função de login 🔵
           >
             <Text style={[
               styles.buttonText,
