@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "778192549283",
+    "project_id": "my-hike-now",
+    "storage_bucket": "my-hike-now.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778192549283:android:40dbb079beeb2983ff9616",
+        "android_client_info": {
+          "package_name": "com.hikenow.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVdeZFkiz28IrQJul6TTfFgRCazFfHLMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
