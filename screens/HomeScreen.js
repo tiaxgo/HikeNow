@@ -26,7 +26,7 @@ const HomeScreen = ({ navigation }) => {
             activeOpacity={1} // Remove a mudança de opacidade ao pressionar
             onPressIn={() => setPressedButton('cadastrar')} // Define qual botão está pressionado
             onPressOut={() => setPressedButton(null)} // Restaura o estado quando solto
-            onPress={() => navigation.navigate('SecondScreen')}
+            onPress={() => navigation.navigate('Cadastro')}
           >
             <Text style={[
               styles.buttonText,
